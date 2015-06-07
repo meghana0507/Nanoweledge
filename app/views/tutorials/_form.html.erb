@@ -1,0 +1,60 @@
+<%= form_for(@tutorial) do |f| %>
+  <% if @tutorial.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tutorial.errors.count, "error") %> prohibited this tutorial from being saved:</h2>
+      <ul>
+        <% @tutorial.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <!-- New Tutorial Column -->
+    <div class="col-md-8">
+        <h4>Title</h4>
+        <%= f.text_field :title, class:'form-control' %>
+        &nbsp;
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <h4>Tutorial Level</h4>
+      <%= f.select :tutorial_level, [['beginner',1],['easy',2],['medium',3],['hard',4],['expert',5]], {:include_blank => false},{:class => 'form-control'}%>
+      &nbsp;
+
+      <h4>Topic</h4>
+      <%= f.collection_select :topic_id, Topic.all, :id, :name, {:include_blank => false},{:class => 'form-control'} %>
+      &nbsp;
+
+      <h4>Keywords</h4>
+      <%= f.fields_for :keywords do |keyword|%> 
+        <%=render 'keyword_fields', :f => keyword%>
+      <% end %>
+      <div class="links">
+        <%= link_to_add_association 'add keywords', f, :keywords%>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+        <h4>Steps</h4>
+        <%=f.fields_for :steps do |step|%> 
+          <%=render 'step_fields', :f => step%>
+        <% end %>
+        <div class="links">
+          <%= link_to_add_association 'add steps', f, :steps%>
+        </div>
+    </div>
+  </div>
+                     
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.submit  class:'btn btn-lg btn-default btn-block'%>
+     </div>
+  </div>
+  <hr>
+<% end %>

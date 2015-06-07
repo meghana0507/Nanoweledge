@@ -1,0 +1,27 @@
+<%= form_for(@topic) do |f| %>
+    <!-- Page Content -->
+  <% if @topic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@topic.errors.count, "error") %> prohibited this topic from being saved:</h2>
+      <ul>
+        <% @topic.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <!-- New Category Details Column -->
+    <div class="col-md-4">
+      <h4>Title</h4>      
+      <%= f.text_field :name, class:'form-control' %> 
+      &nbsp;
+
+      <h4>Category List</h4>
+      <%= f.collection_select :category_id, Category.all, :id, :name, {:include_blank => false},{:class => 'form-control'} %>
+      &nbsp;
+      <%= f.submit "Create Topic", class:'btn btn-lg btn-default btn-block'%>
+    </div>
+  </div>
+<%end%>

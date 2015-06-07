@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Keyword Tutorials</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tutorial</th>
+      <th>Keyword</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @keyword_tutorials.each do |keyword_tutorial| %>
+      <tr>
+        <td><%= keyword_tutorial.tutorial_id %></td>
+        <td><%= keyword_tutorial.keyword_id %></td>
+        <td><%= link_to 'Show', keyword_tutorial %></td>
+        <td><%= link_to 'Edit', edit_keyword_tutorial_path(keyword_tutorial) %></td>
+        <td><%= link_to 'Destroy', keyword_tutorial, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Keyword tutorial', new_keyword_tutorial_path %>
+
+

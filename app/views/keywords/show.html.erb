@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+
+ <div class="container">
+ 
+
+<div class="row">
+            <div class="col-lg-12">
+              <h1 class="page-header">Name:
+  					 <%= @keyword.name %>
+                    
+                </h1>
+            </div>
+        </div>
+
+       <div class="col-md-8">       
+                <div class="well">
+
+			   <%@keyword.tutorials.each do |tutorial|%>
+			 <p>
+			    <%=link_to tutorial.title, tutorial%>
+			</p>
+			  <%end%>
+		</div>	  
+</div>
+</div>
+
+<!-- <%= link_to 'Edit', edit_keyword_path(@keyword) %> |
+<%= link_to 'Back', keywords_path %> -->

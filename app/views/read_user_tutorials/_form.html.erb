@@ -1,0 +1,25 @@
+<%= form_for(@read_user_tutorial) do |f| %>
+  <% if @read_user_tutorial.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@read_user_tutorial.errors.count, "error") %> prohibited this read_user_tutorial from being saved:</h2>
+
+      <ul>
+      <% @read_user_tutorial.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :tutorial_id %><br>
+    <%= f.number_field :tutorial_id %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

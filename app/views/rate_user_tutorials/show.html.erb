@@ -1,0 +1,17 @@
+<p>
+  <strong>Tutorial:</strong>
+  <%= @rate_user_tutorial.tutorial_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @rate_user_tutorial.user_id %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @rate_user_tutorial.score %>
+</p>
+
+<%= link_to 'Edit', edit_rate_user_tutorial_path(@rate_user_tutorial) %> |
+<%= link_to 'Back', rate_user_tutorials_path %>

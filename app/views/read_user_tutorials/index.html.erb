@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Read User Tutorials</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tutorial</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @read_user_tutorials.each do |read_user_tutorial| %>
+      <tr>
+        <td><%= read_user_tutorial.tutorial_id %></td>
+        <td><%= read_user_tutorial.user_id %></td>
+        <td><%= link_to 'Show', read_user_tutorial %></td>
+		<%if current_user && current_user.user_name=='admin'%>		
+        <td><%= link_to 'Edit', edit_read_user_tutorial_path(read_user_tutorial) %></td>
+        <td><%= link_to 'Destroy', read_user_tutorial, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+	<%end%>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Read user tutorial', new_read_user_tutorial_path %>

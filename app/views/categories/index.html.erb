@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+    <div class="col-md-12">
+      <h1 class="page-header">Categories
+        </h1>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8 well">
+    <!-- Categories List Well -->
+      <h4>List of Categories and Topics</h4>
+      <% @categories.each do |category| %>
+        <p>
+          <strong><%= link_to category.name, category %></strong>&nbsp;(<%=category.tutorials.count%> tutorials)
+          <%if current_user && current_user.user_name=='admin'%>
+            <%= link_to ' Edit ', edit_category_path(category) %>
+            <%= link_to ' Destroy ', category, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%end%>
+          <ul>
+            <% category.topics.each do |topic| %>
+              <li>
+                <%= link_to topic.name, topic %>&nbsp;(<%=topic.tutorials.count%> tutorials)
+              </li>
+            <%end%>
+          </ul>
+        </p>
+      <%end%>
+  </div>
+
+  <div class="col-md-4">
+    <br>
+    <%if current_user && current_user.user_name=='admin'%>
+    <%= link_to 'New Category', new_category_path, class:'btn btn-lg btn-default btn-block', type:'submit', value:'New Category' %>
+    <%end%>
+    
+    <br>
+    <%if current_user && current_user.user_name=='admin'%>
+    <%= link_to 'New Topic', new_topic_path, class:'btn btn-lg btn-default btn-block', type:'submit', value:'New Topic' %>
+    <%end%>
+  </div>
+</div>

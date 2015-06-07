@@ -1,0 +1,11 @@
+ <div class="nested-fields">
+  <div class="field">
+    <%= f.label :step_order %>
+    <%= f.number_field :s_no %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+    <%= link_to_remove_association "remove step", f%><br><br><br>
+ </div>

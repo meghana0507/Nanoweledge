@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Keywords</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @keywords.each do |keyword| %>
+      <tr>
+        <td><%= link_to keyword.name, keyword %></td>
+		<%if current_user && current_user.user_name=='admin'%> 
+        <td><%= link_to 'Edit', edit_keyword_path(keyword) %></td>
+        <td><%= link_to 'Destroy', keyword, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+	  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Keyword', new_keyword_path %>

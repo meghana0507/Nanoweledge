@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tutorial:</strong>
+  <%= @keyword_tutorial.tutorial_id %>
+</p>
+
+<p>
+  <strong>Keyword:</strong>
+  <%= @keyword_tutorial.keyword_id %>
+</p>
+
+<%= link_to 'Edit', edit_keyword_tutorial_path(@keyword_tutorial) %> |
+<%= link_to 'Back', keyword_tutorials_path %>

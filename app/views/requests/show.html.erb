@@ -1,0 +1,21 @@
+<div class="well">
+  <p>
+    <strong>Title:</strong>
+    <%= @request.title %>
+  </p>
+  
+  <p>
+    <strong>Topic:</strong>
+    <!-- <%= @request.topic_id %> -->
+    <%= Topic.find(@request.topic_id).name %>
+  </p>
+  
+  <p>
+    <strong>User:</strong>
+    <!-- <%= @request.user_id %> -->
+    <%= User.find(@request.user_id).user_name %>
+  </p>
+  
+  <%= link_to 'Edit', edit_request_path(@request),class:"btn btn-lg btn-default btn-block",style:"width:25%",type:"submit"%>
+	<%= link_to 'Back', requests_path, class:'btn btn-lg btn-default btn-block', style:'width:25%', type:'submit' %>
+</div>

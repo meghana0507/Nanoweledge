@@ -1,0 +1,35 @@
+
+
+    <%= form_for(@rate_user_tutorial) do |f| %>
+      <% if @rate_user_tutorial.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rate_user_tutorial.errors.count, "error") %> prohibited this rate_user_tutorial from being saved:</h2>
+
+      <ul>
+      <% @rate_user_tutorial.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+        <div class="row">
+                  
+            <div class="col-md-4">
+
+                   <%= f.number_field :tutorial_id, :type =>"hidden" %>
+               
+                   <!-- /.input-group -->
+                    <h4>Score</h4>
+
+				    <%= f.select :score,[['Useless',1],['somehow helpful',2],['good',3],['very good',4],['excellet',5]], {},{:class=>"form-control"} %>
+
+                    <p>&nbsp;</p>
+
+                    <%= f.submit 'Rate', class:'btn btn-lg btn-default btn-block' %>
+               
+            </div>
+
+        </div>
+        <!-- /.row -->
+<%end%>
